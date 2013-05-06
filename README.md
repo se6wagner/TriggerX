@@ -136,3 +136,5 @@ Create then a Trigger for your Custom Object and call TriggerX.handleTrigger wit
     	TriggerX.handleTrigger(AccountSampleHandler.class)
 	}
 
+# License #
+BSD

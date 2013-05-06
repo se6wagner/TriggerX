@@ -9,5 +9,9 @@
         <members>AccountSample</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
     <version>27.0</version>
 </Package>
