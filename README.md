@@ -6,6 +6,8 @@ _[Dynamic Event Control](#dynamic-event-control)
 _[Recursion Control](#recursion-control)
 
 [How To Use](#how-to-use)
+[Test Coverage](#test-coverage)
+[License](#license)
 
 # <a name="features">Features</a>#
 
@@ -82,13 +84,13 @@ TriggerX.enable(AccountSampleHandler.class)
 ```
 **control trigger via custom setting**
 
-With the custom setting TRIGGER_CONTROL you can control the execution of your trigger via configuration, which is especially usefull when performing data migration and massive batchjobs. The following custom setting for the AccountSampleHandler class 
+With the custom setting TRIGGER_CONTROL you can control the execution of your trigger via configuration, which is especially usefull when performing data migration and massive batchjobs. The following custom setting for the AccountSampleHandler.class 
 
 ```java
 TRIGGER_CONTROL__c {
 	  Name = 'AccountSampleHandler'
 	, AFTER_INSERT__c = true
-	, AFTER_UPDATE__c = true
+	, AFTER_UPDATE__c = false
 	, AFTER_DELETE__c = false
 	, AFTER_UNDELETE__c = true
 	, BEFORE_INSERT__c = false
@@ -96,7 +98,7 @@ TRIGGER_CONTROL__c {
 	, BEFORE_DELETE__c = false}
 ```
 
-will prevent the execution of all BEFORE events as well as AFTER UPDATE and AFTER UNDELETE events for AccountSampleHandler.class. If no TRIGGER_CONTROL__c record exists, all events are considered as enabled!
+will prevent the execution of all BEFORE events as well as AFTER UPDATE and AFTER DELETE events for AccountSampleHandler.class. If no TRIGGER_CONTROL__c record exists, all events are considered as enabled!
 
 
 ## <a name="recursion-control">Recursion Control</a> ##
@@ -142,5 +144,10 @@ Create then a Trigger for your Custom Object and call TriggerX.handleTrigger wit
     	TriggerX.handleTrigger(AccountSampleHandler.class)
 	}
 
-# License #
+
+# <a name="test-coverage">Test Coverage</a> #
+TriggerX.cls has a 100% test coverage.
+AccountSampleHandler.cls and AccountSample.trigger might have a lower coverage, depending on required fields and validation rules on Account and Contact.
+
+# <a name="license">License</a> #
 Redistribution and use in source and binary forms, with or without modification, are permitted.

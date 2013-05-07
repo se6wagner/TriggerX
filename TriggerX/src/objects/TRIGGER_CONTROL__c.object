@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>List</customSettingsType>
     <customSettingsVisibility>Public</customSettingsVisibility>
-    <description>Control trigger event execution. If now record exists, all trigger events are considered as enabled</description>
+    <description>Control trigger event execution. Save settings by the name of the class you want to control. If now record exists, all trigger events are considered as enabled</description>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <fields>

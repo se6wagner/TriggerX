@@ -11,7 +11,6 @@ public class AccountSampleHandler extends TriggerX {
 
     public override void onBeforeUpdate(Map<Id,sObject> triggerOldMap){
 
-        Map<Id,Id> accountsWithNewOwner = new Map<Id,Id>();
         Set<Id> updatedIds = TriggerX.getUpdatedIds();
 
         for (Account record:(Account[])records)
@@ -19,11 +18,6 @@ public class AccountSampleHandler extends TriggerX {
             // skip records which have been updated within the current context
             if (updatedIds.contains(record.Id)) continue;
 
-            // owner changed
-            if (record.OwnerId != ((Account)triggerOldMap.get(record.Id)).OwnerId)
-            {
-                accountsWithNewOwner.put(record.Id,record.OwnerId);
-            }
         }
         // more logic goes here
     }
@@ -99,6 +93,14 @@ public class AccountSampleHandler extends TriggerX {
         try
         {
             insert record;
+            
+            // create contact
+            Contact contact = new Contact(
+                AccountId = record.Id
+                , LastName = 'LAST_NAME');
+            insert contact;
+
+            record.BillingStreet = 'Street';
             update record;
 
             Map<Id,Account> accMap = new Map<Id,Account>();
