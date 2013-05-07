@@ -5,8 +5,8 @@ _[Evaluate Field Value Changes](#evaluate-field-value-changes)
 _[Dynamic Event Control](#dynamic-event-control)  
 _[Recursion Control](#recursion-control)
 
-[How To Use](#how-to-use)
-[Test Coverage](#test-coverage)
+[How To Use](#how-to-use)  
+[Test Coverage](#test-coverage)  
 [License](#license)
 
 # <a name="features">Features</a>#
