@@ -1,16 +1,16 @@
 **Table of Contents**  
 [Features](#features)  
-_[One-Line Trigger Code](#one_line)  
-_[Evaluate Field Value Changes](#field_eval)  
-_[Dynamic Event Control](#event_control)  
-_[Recursion Control](#recursion)
+_[One-Line Trigger Code](#one-line-trigger-code)  
+_[Evaluate Field Value Changes](#evaluate-field-value-changes)  
+_[Dynamic Event Control](#dynamic-event-control)  
+_[Recursion Control](#recursion-control)
 
-[How To Use](#how_to)
+[How To Use](#how-to-use)
 
-# <a id="features">Features</a>#
+# <a name="features">Features</a>#
 
 
-## <a id="one_line">One-Line Trigger Code</a> ##
+## <a name="one-line-trigger-code">One-Line Trigger Code</a> ##
 
 Execute Triggers with a single line of code
 
@@ -18,7 +18,7 @@ Execute Triggers with a single line of code
 TriggerX.handleTrigger(AccountSampleHandler.class)
 ```
 
-## <a id="field_eval">Evaluate Field Value Changes</a> ##
+## <a name="evaluate-field-value-changes">Evaluate Field Value Changes</a> ##
 Often triggers contain conditional logic that checks for changed field values
 
 ```java
@@ -30,17 +30,25 @@ if (record.CloseDate != recordOld.CloseDate
 	// logic executed when condition is true
 }
 ```
-. Using the TriggerX.hasChangedFields methods and TriggerX.getChangedFields methods you can you provide a list of fields (String or sObjectField) for which changes should be evaluated
+. Using the hasChangedFields and getChangedFields methods you just pass in a list of fields (String or sObjectField) for which changes should be evaluated
 
 ```java
-String[] fieldZ = new String[]{'StageName','CloseDate','OwnerId','Type'};
+// use string field names
+String[] stringFieldZ = new String[]{'StageName','CloseDate','OwnerId','Type'};
 
-if (TriggerX.hasChangedFields(fieldZ,record,recordOld)){
+if (TriggerX.hasChangedFields(stringFieldZ,record,recordOld)){
 	// logic executed when condition is true
+}
+
+// or sObjectFields
+sObjectField[] fieldZ = new sObjectField[]{Opportunity.StageName, Opportunity.CloseDate, Opportunity.OwnerId, Opportunity.Type};
+
+for (sObjectField field:TriggerX.getChangedFields(fieldZ,record,recordOld)){
+	// process field
 }
 ```
 
-## <a id="event_control">Dynamic Event Control</a> ##
+## <a name="dynamic-event-control">Dynamic Event Control</a> ##
 
 Turn execution of events within the runtime context on and off. Use for instance when you perform operations that cause updates on multiple hierachy levels of the same ObjectType see also *Recursion Control*
 
@@ -79,21 +87,19 @@ With the custom setting TRIGGER_CONTROL you can control the execution of your tr
 ```java
 TRIGGER_CONTROL__c {
 	  Name = 'AccountSampleHandler'
-	, AFTER__c = false
 	, AFTER_INSERT__c = true
 	, AFTER_UPDATE__c = true
 	, AFTER_DELETE__c = false
-	, AFTER_UNDELETE__c = false
-	, BEFORE__c = true
+	, AFTER_UNDELETE__c = true
 	, BEFORE_INSERT__c = false
 	, BEFORE_UPDATE__c = false
 	, BEFORE_DELETE__c = false}
 ```
 
-will prevent the exuection of AFTER INSERT, AFTER UPDATE as well as all BEFORE events for AccountSampleHandler.class.
+will prevent the execution of all BEFORE events as well as AFTER UPDATE and AFTER UNDELETE events for AccountSampleHandler.class. If no TRIGGER_CONTROL__c record exists, all events are considered as enabled!
 
 
-## <a id="recursion">Recursion Control</a> ##
+## <a name="recursion-control">Recursion Control</a> ##
 The built-in recursion control allows you to keep track of updated records within the current runtime context and filter on those records which have already been processed. Use for instance for updates on multiple hierachy levels of the same ObjectType or for recursive updates.
 
 ```java
@@ -104,7 +110,7 @@ TriggerX.addUpdatedIds(triggerOldMap.keySet());
 #getNonRecursiveUpdates()
 ```
 
-# <a id="how_to">How To Use</a> #
+# <a name="how-to-use">How To Use</a> #
 
 **Handler class**  
 Create a Handler class that extends TriggerX, per Custom Object. Overwrite those methods you actually want to handle. Keep in mind, that you have to cast the record variables to the concrete sObjectType
@@ -137,4 +143,4 @@ Create then a Trigger for your Custom Object and call TriggerX.handleTrigger wit
 	}
 
 # License #
-BSD
+Redistribution and use in source and binary forms, with or without modification, are permitted.

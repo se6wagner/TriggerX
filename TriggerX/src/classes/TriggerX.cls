@@ -1,7 +1,10 @@
 /**
- * TriggerX
+ * TriggerX by Sebastian Wagner 2013
  *
- * Simple API for simplified Trigger Execution
+ * Redistribution and use in source and binary forms, with or without modification, are permitted.
+ *
+ * Force.com Trigger API for advanced trigger execution
+ * http://github.com/sebwagner/TriggerX
  */
 public virtual class TriggerX {
 
@@ -217,21 +220,19 @@ public virtual class TriggerX {
 
             TRIGGER_CONTROL__c record = TRIGGER_CONTROL__c.getInstance(className.toString());
             Set<String> events = getDisabledEvents(className);
-    
-            system.debug(record);
-    
+
             if (record != null)
             {
                 // reduce statements  
                 events.addAll(
                   new Set<String>{
-                      (record.AFTER__c || record.AFTER_INSERT__c) ? 'AFTER_INSERT' : null
-                    , (record.AFTER__c || record.AFTER_UPDATE__c) ? 'AFTER_UPDATE' : null
-                    , (record.AFTER__c || record.AFTER_DELETE__c) ? 'AFTER_DELETE' : null
-                    , (record.AFTER__c || record.AFTER_UNDELETE__c) ? 'AFTER_UNDELETE' : null
-                    , (record.BEFORE__c || record.BEFORE_INSERT__c) ? 'BEFORE_INSERT' : null
-                    , (record.BEFORE__c || record.BEFORE_UPDATE__c) ? 'BEFORE_UPDATE' : null
-                    , (record.BEFORE__c || record.BEFORE_DELETE__c) ? 'BEFORE_DELETE' : null});
+                      !record.AFTER_INSERT__c ? 'AFTER_INSERT' : null
+                    , !record.AFTER_UPDATE__c ? 'AFTER_UPDATE' : null
+                    , !record.AFTER_DELETE__c ? 'AFTER_DELETE' : null
+                    , !record.AFTER_UNDELETE__c ? 'AFTER_UNDELETE' : null
+                    , !record.BEFORE_INSERT__c ? 'BEFORE_INSERT' : null
+                    , !record.BEFORE_UPDATE__c ? 'BEFORE_UPDATE' : null
+                    , !record.BEFORE_DELETE__c ? 'BEFORE_DELETE' : null});
 
                 events.remove(null);
             }
@@ -239,6 +240,7 @@ public virtual class TriggerX {
             // remember that the given key has been index already 
             ctrlInits.add(className);
         }
+
     }
 
 

@@ -2,80 +2,71 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>List</customSettingsType>
     <customSettingsVisibility>Public</customSettingsVisibility>
-    <description>Control trigger execution. Check events for which you want to prevent execution</description>
+    <description>Control trigger event execution. If now record exists, all trigger events are considered as enabled</description>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>AFTER_DELETE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off AFTER DELETE</inlineHelpText>
+        <inlineHelpText>Uncheck to turn off AFTER DELETE</inlineHelpText>
         <label>AFTER_DELETE</label>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>AFTER_INSERT__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off AFTER INSERT</inlineHelpText>
+        <inlineHelpText>Uncheck to disable AFTER INSERT</inlineHelpText>
         <label>AFTER_INSERT</label>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>AFTER_UNDELETE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off AFTER UNDELETE</inlineHelpText>
+        <inlineHelpText>Uncheck to disable AFTER UNDELETE</inlineHelpText>
         <label>AFTER_UNDELETE</label>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>AFTER_UPDATE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off AFTER UPDATE</inlineHelpText>
+        <inlineHelpText>Uncheck to disable AFTER UPDATE</inlineHelpText>
         <label>AFTER_UPDATE</label>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>AFTER__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <inlineHelpText>Check to turn off all AFTER EVENTS</inlineHelpText>
-        <label>AFTER</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>BEFORE_DELETE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off BEFORE DELETE</inlineHelpText>
+        <inlineHelpText>Uncheck to disable BEFORE DELETE</inlineHelpText>
         <label>BEFORE_DELETE</label>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>BEFORE_INSERT__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off BEFORE_INSERT</inlineHelpText>
+        <inlineHelpText>Uncheck to disable BEFORE_INSERT</inlineHelpText>
         <label>BEFORE_INSERT</label>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>BEFORE_UPDATE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off BEFORE UPDATE</inlineHelpText>
+        <inlineHelpText>Uncheck to disable BEFORE UPDATE</inlineHelpText>
         <label>BEFORE_UPDATE</label>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>BEFORE__c</fullName>
-        <defaultValue>false</defaultValue>
+        <fullName>DESCRIPTION__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Check to turn off all BEFORE events</inlineHelpText>
-        <label>BEFORE</label>
-        <type>Checkbox</type>
+        <label>DESCRIPTION</label>
+        <required>false</required>
+        <type>TextArea</type>
     </fields>
     <label>TRIGGER CONTROL</label>
 </CustomObject>

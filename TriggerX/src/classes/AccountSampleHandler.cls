@@ -1,7 +1,10 @@
 /**
- * AccountSampleHandler
+ * TriggerX by Sebastian Wagner 2013
  *
- * Sample implementation of TriggerX
+ * Redistribution and use in source and binary forms, with or without modification, are permitted.
+ *
+ * Sample Implementation of a TriggerHandler for TriggerX
+ * http://github.com/sebwagner/TriggerX
  */
 public class AccountSampleHandler extends TriggerX {
 
@@ -22,7 +25,6 @@ public class AccountSampleHandler extends TriggerX {
                 accountsWithNewOwner.put(record.Id,record.OwnerId);
             }
         }
-
         // more logic goes here
     }
 
@@ -90,7 +92,7 @@ public class AccountSampleHandler extends TriggerX {
     
 
     @isTest
-    private static void basicTest(){
+    private static void stupidTest(){
 
         // just cover the trigger
         Account record = new Account(Name = 'TEST_ACCOUNT');

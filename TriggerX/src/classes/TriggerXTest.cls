@@ -1,7 +1,10 @@
 /**
- * TriggerXTest
+ * TriggerX by Sebastian Wagner 2013
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted.
  *
  * Unit Tests for TriggerX
+ * http://github.com/sebwagner/TriggerX
  */
 @isTest
 public class TriggerXTest {
@@ -171,12 +174,12 @@ public class TriggerXTest {
 
         // create the CONTROL record
         TRIGGER_CONTROL__c record = new TRIGGER_CONTROL__c(
-              Name = typ.toString());
+                Name = typ.toString());
 
         // set flags on corresponding fields 
         for (TriggerX.EventType eventX:dsbld)
         {
-            record.put(eventX.name() + '__c',true);
+            record.put(eventX.name() + '__c',false);
         }
 
         upsert record;
