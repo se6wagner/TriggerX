@@ -117,7 +117,7 @@ public virtual class TriggerX {
             if (isInsert && !dsbld.contains(EventType.AFTER_INSERT.name())) handler.doConstruct(triggerNew).onAfterInsert();
             else if (isUpdate && !dsbld.contains(EventType.AFTER_UPDATE.name())) handler.doConstruct(triggerNew).onAfterUpdate(triggerOldMap);
             else if (isDelete && !dsbld.contains(EventType.AFTER_DELETE.name())) handler.doConstruct(triggerOldMap.values()).onAfterDelete();
-            else if (isUndelete && !dsbld.contains(EventType.AFTER_UNDELETE.name())) handler.doConstruct(triggerOldMap.values()).onAfterUndelete();
+            else if (isUndelete && !dsbld.contains(EventType.AFTER_UNDELETE.name())) handler.doConstruct(triggerNew).onAfterUndelete();
         }
     }
 
