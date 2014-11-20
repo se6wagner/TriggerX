@@ -1,3 +1,8 @@
+<a href="https://githubsfdeploy.herokuapp.com?owner=sebwagner&repo=TriggerX">
+  <img alt="Deploy to Salesforce"
+       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
+</a>
+
 **Table of Contents**  
 [Features](#features)  
 _[One-Line Trigger Code](#one-line-trigger-code)  
